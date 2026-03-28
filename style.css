@@ -1,0 +1,819 @@
+/* ==================================
+   ESTILOS GERAIS - TONS PASTEL
+   ================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    background: linear-gradient(135deg, #FFE5E9 0%, #E8D4F8 25%, #D4E7F7 50%, #E8F5E9 75%, #FFF9E6 100%);
+    background-size: 400% 400%;
+    animation: gradientChange 20s ease infinite;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes gradientChange {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==================================
+   DECORAÇÕES DE FUNDO
+   ================================== */
+
+.background-decoration {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: fixed;
+    font-size: 3em;
+    opacity: 0.15;
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-element:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+.floating-element:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; font-size: 2.5em; }
+.floating-element:nth-child(3) { bottom: 20%; left: 5%; animation-delay: 2s; font-size: 3.5em; }
+.floating-element:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 3s; }
+.floating-element:nth-child(5) { top: 50%; right: 5%; animation-delay: 1.5s; font-size: 2em; }
+.floating-element:nth-child(6) { top: 60%; left: 8%; animation-delay: 2.5s; font-size: 2.8em; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* ==================================
+   HEADER COM STYLING PASTEL
+   ================================== */
+
+header {
+    background: linear-gradient(135deg, #FFD6E8 0%, #E8CAFF 100%);
+    border-radius: 40px;
+    padding: 50px 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 60px rgba(255, 150, 200, 0.3);
+    border: 5px dashed #FFB6D9;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 200, 220, 0.3), transparent);
+    border-radius: 50%;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+h1 {
+    font-size: clamp(2.5em, 8vw, 5em);
+    background: linear-gradient(135deg, #FF69B4, #FFB6D9, #FF1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+    animation: wiggle 3s ease-in-out infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #D966FF;
+    margin-top: 15px;
+    font-weight: bold;
+    animation: bounce-subtitle 2s ease-in-out infinite;
+}
+
+@keyframes bounce-subtitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ==================================
+   CONTAINER E GRID
+   ================================== */
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.musicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* ==================================
+   CARDS DE MÚSICA COM DESIGN PASTEL
+   ================================== */
+
+.musica-card {
+    background: linear-gradient(135deg, #FFF5E6 0%, #FFE5F0 50%, #F0E5FF 100%);
+    border-radius: 30px;
+    padding: 35px 30px;
+    text-align: center;
+    position: relative;
+    border: 4px solid #FFB6D9;
+    box-shadow: 0 15px 50px rgba(255, 180, 200, 0.25);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.musica-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: left 0.6s;
+}
+
+.musica-card:hover::before {
+    left: 100%;
+}
+
+.musica-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 200, 220, 0.3), transparent);
+    border-radius: 50%;
+    animation: float-corner 6s ease-in-out infinite;
+}
+
+@keyframes float-corner {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 20px); }
+}
+
+.musica-card:hover {
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 30px 70px rgba(255, 105, 180, 0.4);
+    border-color: #FF69B4;
+}
+
+.musica-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FFB6D9, #FF69B4);
+    color: white;
+    border-radius: 50%;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4);
+    position: relative;
+    z-index: 1;
+    border: 4px solid white;
+    animation: number-bounce 2s ease-in-out infinite;
+}
+
+@keyframes number-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.musica-emoji {
+    font-size: 5em;
+    margin: 20px 0;
+    display: inline-block;
+    animation: emoji-spin 4s linear infinite;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 8px 15px rgba(255, 105, 180, 0.3));
+}
+
+@keyframes emoji-spin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.musica-titulo {
+    font-size: 1.8em;
+    color: #FF1493;
+    margin: 15px 0;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.musica-descricao {
+    color: #8B4789;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+}
+
+/* ==================================
+   BOTÕES DECORATIVOS
+   ================================== */
+
+.btn-youtube {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FFB6D9, #FF69B4);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: 3px solid #FF1493;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.btn-youtube::before {
+    content: '💕';
+    margin-right: 8px;
+}
+
+.btn-youtube:hover {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+    background: linear-gradient(135deg, #FF69B4, #FFB6D9);
+}
+
+.btn-youtube:active {
+    transform: scale(0.95);
+}
+
+/* ==================================
+   SEÇÃO DE IMAGENS (VOCÊS DOIS)
+   ================================== */
+
+.casal-section {
+    background: linear-gradient(135deg, #E8CAFF 0%, #FFD6E8 100%);
+    border-radius: 40px;
+    padding: 50px 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 4px solid #D966FF;
+    box-shadow: 0 20px 60px rgba(217, 102, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.casal-section::before {
+    content: '💕 ✨ 🌹';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 2em;
+    animation: float 6s ease-in-out infinite;
+}
+
+.casal-section::after {
+    content: '💕 ✨ 🌹';
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 2em;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.casal-title {
+    font-size: 2.5em;
+    color: #FF1493;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.2);
+    font-weight: bold;
+}
+
+.casal-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.casal-image-wrapper {
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+}
+
+.casal-image-wrapper:nth-child(even) {
+    animation-delay: 1s;
+}
+
+.casal-image-wrapper img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 20px;
+    border: 5px solid white;
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.casal-image-wrapper:hover img {
+    transform: scale(1.08) rotate(2deg);
+}
+
+.casal-badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: linear-gradient(135deg, #FFB6D9, #FF69B4);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+    border: 3px solid white;
+}
+
+/* ==================================
+   FOOTER DECORATIVO
+   ================================== */
+
+footer {
+    text-align: center;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, #FFE5F0 0%, #E8D4F8 100%);
+    border-radius: 30px;
+    border: 3px dashed #FFB6D9;
+    color: #8B4789;
+    font-size: 1.4em;
+    font-weight: bold;
+    box-shadow: 0 15px 40px rgba(255, 180, 200, 0.25);
+    position: relative;
+    margin-top: 50px;
+}
+
+footer::before,
+footer::after {
+    content: '🌹';
+    display: inline-block;
+    margin: 0 15px;
+    animation: rotate-slow 6s linear infinite;
+}
+
+footer::after {
+    animation-delay: 3s;
+    animation-direction: reverse;
+}
+
+@keyframes rotate-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.heart-beat {
+    display: inline-block;
+    color: #FF1493;
+    animation: heart-beat 1.2s ease-in-out infinite;
+    margin: 0 8px;
+    font-size: 1.3em;
+}
+
+@keyframes heart-beat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.4); }
+    50% { transform: scale(1); }
+}
+
+/* ==================================
+   ELEMENTOS DECORATIVOS ESPALHADOS
+   ================================== */
+
+.decorative-shapes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.shape:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    background: #FF69B4;
+    top: 10%;
+    left: 5%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.shape:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    background: #D966FF;
+    bottom: 15%;
+    right: 10%;
+    animation: float 15s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.shape:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    background: #FFB6D9;
+    top: 30%;
+    right: 5%;
+    animation: float 18s ease-in-out infinite;
+    animation-delay: 6s;
+}
+
+/* ==================================
+   PADRÃO DE FUNDO DECORATIVO
+   ================================== */
+
+.pattern-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: -3;
+    background-image: 
+        radial-gradient(circle at 20% 50%, #FF69B4 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, #D966FF 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, #FFB6D9 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ==================================
+   RESPONSIVO
+   ================================== */
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 20px;
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .musicas-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .musica-card {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+
+    .btn-youtube {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+
+    .casal-images {
+        gap: 20px;
+    }
+
+    .casal-image-wrapper img {
+        max-width: 180px;
+    }
+
+    .floating-element {
+        display: none;
+    }
+
+    .shape {
+        display: none;
+    }
+
+    footer {
+        font-size: 1.1em;
+        padding: 25px 15px;
+    }
+}
+
+/* ==================================
+   ACESSIBILIDADE
+   ================================== */
+
+a:focus {
+    outline: 3px solid #FF1493;
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline: 3px solid #FF1493;
+}
+
+/* ==================================
+   EFEITO DE CONFETE AO CLICAR
+   ================================== */
+
+@keyframes confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg) scale(0);
+    }
+}
+
+/* ==================================
+   ANIMAÇÕES ADICIONAIS
+   ================================== */
+
+.blink {
+    animation: blink 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.shine {
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* ==================================
+   GRADIENTES CUSTOMIZADOS
+   ================================== */
+
+.gradient-1 {
+    background: linear-gradient(135deg, #FFB6D9, #FFE5E9);
+}
+
+.gradient-2 {
+    background: linear-gradient(135deg, #E8D4F8, #F0E5FF);
+}
+
+.gradient-3 {
+    background: linear-gradient(135deg, #D4E7F7, #E8F5E9);
+}
+
+/* ==================================
+   CURSOR PERSONALIZADO
+   ================================== */
+
+body {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="24" font-size="28" fill="%23FF69B4">💕</text></svg>') 0 0, auto;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.8), rgba(255, 105, 180, 0.2));
+    border: 2px solid #FF69B4;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    animation: cursor-pulse 1.5s ease-in-out infinite;
+}
+
+.custom-cursor.active {
+    display: block;
+}
+
+@keyframes cursor-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+    }
+    50% { 
+        transform: scale(1.2);
+        box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.3);
+    }
+}
+
+/* ==================================
+   T-REX GAME SECTION
+   ================================== */
+
+.trex-game-section {
+    background: linear-gradient(135deg, #E8CAFF 0%, #FFD6E8 100%);
+    border-radius: 40px;
+    padding: 40px 30px;
+    margin: 50px 0;
+    text-align: center;
+    border: 4px solid #D966FF;
+    box-shadow: 0 20px 60px rgba(217, 102, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.trex-game-section::before {
+    content: '🎮 ✨ 🎯';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 2em;
+    animation: float 6s ease-in-out infinite;
+}
+
+.trex-game-section::after {
+    content: '🎮 ✨ 🎯';
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 2em;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.game-title {
+    font-size: 2.2em;
+    color: #FF1493;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.2);
+    font-weight: bold;
+}
+
+.game-subtitle {
+    font-size: 1em;
+    color: #8B4789;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+#gameCanvas {
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 3px solid #FF69B4;
+    border-radius: 15px;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-game {
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #FFB6D9, #FF69B4);
+    color: white;
+    border: 2px solid #FF1493;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+.btn-game:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+}
+
+.btn-game:active {
+    transform: scale(0.95);
+}
+
+.game-score {
+    font-size: 1.3em;
+    color: #FF1493;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: rgba(255, 20, 147, 0.1);
+    border-radius: 25px;
+    border: 2px solid #FF1493;
+}
+
+/* ==================================
+   EFEITOS INTERATIVOS ADICIONAIS
+   ================================== */
+
+.musica-card {
+    transition: all 0.3s ease;
+}
+
+.musica-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(255, 105, 180, 0.4) !important;
+}
+
+.musica-emoji:hover {
+    animation-duration: 1s !important;
+}
+
+/* ==================================
+   ANIMAÇÃO DO GIF MENOR
+   ================================== */
+
+.casal-gif-wrapper {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.casal-gif-wrapper .tenor-gif-embed {
+    max-width: 400px !important;
+    width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .casal-gif-wrapper .tenor-gif-embed {
+        max-width: 300px !important;
+    }
+    
+    .trex-game-section {
+        padding: 25px 20px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+    
+    .game-title {
+        font-size: 1.5em;
+    }
+}
